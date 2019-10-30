@@ -2,34 +2,45 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_TechCycle.Interfaces;
 using API_TechCycle.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace API_TechCycle.Repositorio
 {
     public class AvaliacaoRepositorio : IAvaliacaoRepositorio
     {
-        
-        public Task<List<Avaliacao>> Get()
+        TECHCYCLEContext context = new TECHCYCLEContext();
+
+        public async Task<List<Avaliacao>> Get()
         {
-            throw new System.NotImplementedException();
+            return await context.Avaliacao.ToListAsync();
         }
 
-        public Task<Avaliacao> Get(int id)
+        public async Task<Avaliacao> Get(int id)
         {
-            throw new System.NotImplementedException();
+            return await context.Avaliacao.FindAsync(id);
         }
 
-        public Task<Avaliacao> Post(Avaliacao avaliacao)
+        public async Task<Avaliacao> Post(Avaliacao avaliacao)
         {
-            throw new System.NotImplementedException();
+            await context.Avaliacao.AddAsync(avaliacao);
+            await context.SaveChangesAsync();
+
+            return avaliacao;
         }
 
-        public Task<Avaliacao> Put(Avaliacao avaliacao)
+        public async Task<Avaliacao> Put(Avaliacao avaliacao)
         {
-            throw new System.NotImplementedException();
+            context.Entry(avaliacao).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+
+            return avaliacao;
         }
-        public Task<Avaliacao> Delete(Avaliacao avaliacao)
+        public async Task<Avaliacao> Delete(Avaliacao avaliacao)
         {
-            throw new System.NotImplementedException();
+            context.Avaliacao.Remove(avaliacao);
+            await context.SaveChangesAsync();
+
+            return avaliacao;
         }
     }
 }
