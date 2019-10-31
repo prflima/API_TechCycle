@@ -83,7 +83,7 @@ namespace API_TechCycle.Controllers
                 return NotFound("Avaliação não existe");
             
             await repositorio.Delete(avaliacao);
-            return Ok("Deletado");
+            return Ok(avaliacao);
         }
     }
 }

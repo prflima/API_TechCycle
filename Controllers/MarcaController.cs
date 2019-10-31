@@ -73,7 +73,7 @@ namespace API_TechCycle.Controllers
                 await repositorio.Put(marca);
             }catch(DbUpdateConcurrencyException){
 
-                var validarMarca = repositorio.Get(marca.IdMarca);
+                var validarMarca = repositorio.Get(id);
 
                 if(validarMarca == null){
                     return NotFound();
