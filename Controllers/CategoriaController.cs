@@ -72,9 +72,9 @@ namespace API_TechCycle.Controllers
             }
             catch(DbUpdateConcurrencyException)
             {
-                var validarCategoria = repositorio.Get(categoria.IdCategoria);
+                var validarCategoria = repositorio.Get(id);
                 if(validarCategoria == null)
-                    return NotFound();
+                    return NotFound("Categoria não existe");
                 else
                     throw;
             }
