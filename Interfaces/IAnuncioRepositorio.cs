@@ -17,5 +17,9 @@ namespace API_TechCycle.Interfaces
          Task<Anuncio> Delete(Anuncio anuncio);
 
          Task<List<Anuncio>> BuscaPorPreco(decimal preco);
+
+         Task<List<Anuncio>> BuscaPorMemoria(int memoria);
+
+         Task<List<Anuncio>> BuscaPorProcessador(string processador);
     }
 }
