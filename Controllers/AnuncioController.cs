@@ -13,9 +13,12 @@ namespace API_TechCycle.Controllers
     [Produces("application/json")]
     public class AnuncioController : ControllerBase
     {
-
         AnuncioRepositorio repositorio = new AnuncioRepositorio();
 
+        /// <summary>
+        /// Tem a função de listar um anúncio.
+        /// </summary>
+        /// <returns>Retorna uma lista de anúncio.</returns>
         [HttpGet]
         public async Task<ActionResult<List<Anuncio>>> Get(){
 
@@ -26,7 +29,11 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
-
+        /// <summary>
+        /// Tem a função de buscar um anúncio na lista.
+        /// </summary>
+        /// <param name="id">Passa um id de um anúncio</param>
+        /// <returns>Retorna um anúncio</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Anuncio>> Get(int id){
 
@@ -38,7 +45,11 @@ namespace API_TechCycle.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Tem a função de cadastrar um novo anúncio na lista.
+        /// </summary>
+        /// <param name="anúncio">Passa um anúncio.</param>
+        /// <returns>Retorna um anúncio.</returns>
         [HttpPost]
         public async Task<ActionResult<Anuncio>> Post(Anuncio anuncio){
 
@@ -55,7 +66,12 @@ namespace API_TechCycle.Controllers
 
             return anuncio;
         }   
-
+        /// <summary>
+        /// Tem a função de buscar na lista um anúncio.
+        /// </summary>
+        /// <param name="id">Passa um id de um anúncio.</param>
+        /// <param name="anuncio">Passa um anúncio para identificação.</param>
+        /// <returns>Retorna um anúncio.</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<Anuncio>> Put(int id, Anuncio anuncio){
 
@@ -80,7 +96,11 @@ namespace API_TechCycle.Controllers
 
             return anuncio;
         }
-
+        /// <summary>
+        /// Tem a função de exclúir um anúncio na lista.
+        /// </summary>
+        /// <param name="id">Passa um id de um anúncio.</param>
+        /// <returns>Retorna um anúncio.</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<Anuncio>> Delete(int id){
 

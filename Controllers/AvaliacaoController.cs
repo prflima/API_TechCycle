@@ -14,7 +14,10 @@ namespace API_TechCycle.Controllers
     public class AvaliacaoController : ControllerBase
     {
         AvaliacaoRepositorio repositorio = new AvaliacaoRepositorio();
-
+        /// <summary>
+        /// Tem a função de listar uma avaliação.
+        /// </summary>
+        /// <returns>Retorna uma lista de avaliação.</returns>
         [HttpGet]
         public async Task<ActionResult<List<Avaliacao>>> Get()
         {
@@ -27,6 +30,11 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+        /// <summary>
+        /// Tem a função de buscar uma avaliação na lista.
+        /// </summary>
+        /// <param name="id">passa um id de uma avaliação.</param>
+        /// <returns>Retorna uma avaliação.</returns>
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Avaliacao>> get(int id)
@@ -37,7 +45,11 @@ namespace API_TechCycle.Controllers
             
             return avaliacao;
         }
-
+        /// <summary>
+        /// Tem a função de cadastra uma avaliação.
+        /// </summary>
+        /// <param name="avaliacao">Passa uma avaliação.</param>
+        /// <returns>Retorna uma avaliação.</returns>
         [HttpPost]
         public async Task<ActionResult<Avaliacao>> Post(Avaliacao avaliacao)
         {
@@ -52,7 +64,12 @@ namespace API_TechCycle.Controllers
 
             return avaliacao;
         }
-
+        /// <summary>
+        /// Tem a função de atualizar uma avaliação.
+        /// </summary>
+        /// <param name="id">Passa um id de uma avaliação.</param>
+        /// <param name="avaliacao">Passa uma avaliação.</param>
+        /// <returns>Retorna a avaliação atualizada.</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<Avaliacao>> Put(int id, Avaliacao avaliacao)
         {
@@ -74,7 +91,11 @@ namespace API_TechCycle.Controllers
 
             return avaliacao;
         }      
-
+        /// <summary>
+        /// Tem a função de excluír uma avaliação.
+        /// </summary>
+        /// <param name="id">Passa um id de uma avaliação.</param>
+        /// <returns>Retorna a avaliação excluída.</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<Avaliacao>> Delete(int id)
         {
