@@ -74,5 +74,37 @@ namespace API_TechCycle.Repositorio
 
             return listaAnuncios;
         }
+
+        public async Task<List<Anuncio>> BuscaPorMemoria(int memoria)
+        {
+            List<Anuncio> listaAnuncio = await context.Anuncio.Where(anc => anc.IdProdutoNavigation.Memoria == memoria)
+                                                              .Include(pdt => pdt.IdProdutoNavigation)
+                                                              .Include(avl => avl.IdAvaliacaoNavigation)
+                                                              .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }  
+
+            return listaAnuncio;
+        }
+
+        public async Task<List<Anuncio>> BuscaPorProcessador(string processador){
+
+            List<Anuncio> listaAnuncio = await context.Anuncio.Where(anc => anc.IdProdutoNavigation.Processador == processador)
+                                                              .Include(pdt => pdt.IdProdutoNavigation)
+                                                              .Include(avl => avl.IdAvaliacaoNavigation)
+                                                              .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio){
+                
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }
+
+            return listaAnuncio;
+        }
     }
 }

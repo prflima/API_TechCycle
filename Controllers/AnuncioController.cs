@@ -130,5 +130,29 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+
+        [HttpGet("buscarmemoria/{memoria}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoria(int memoria)
+        {
+            try
+            {
+                return await repositorio.BuscaPorMemoria(memoria);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("buscarprocessador/{processador}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscaPorProcessador(string processador){
+
+            try{
+
+                return await repositorio.BuscaPorProcessador(processador);
+            }catch(Exception){
+                throw;
+            }
+        }
     }
 }
