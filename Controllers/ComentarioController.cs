@@ -15,7 +15,10 @@ namespace API_TechCycle.Controllers
     {
 
         ComentarioRepositorio repositorio = new ComentarioRepositorio();
-
+        /// <summary>
+        /// Tem a função de listar um comentário.
+        /// </summary>
+        /// <returns>Retorna uma lista de comentário.</returns>
         [HttpGet]
         public async Task<ActionResult<List<Comentario>>> Get(){
 
@@ -26,7 +29,11 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
-
+        /// <summary>
+        /// Tem a função de buscar um Comentário na lista.
+        /// </summary>
+        /// <param name="id">Passa um id de um Comentário</param>
+        /// <returns>Retorna um Comentário</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Comentario>> Get(int id){
 
@@ -43,7 +50,11 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         } 
-
+        /// <summary>
+        /// Tem a função de cadastrar um novo comentário na lista.
+        /// </summary>
+        /// <param name="comentario">Passa um comentário.</param>
+        /// <returns>Retorna um comentário.</returns>
         [HttpPost]
         public async Task<ActionResult<Comentario>> Post(Comentario comentario){
 
@@ -56,7 +67,12 @@ namespace API_TechCycle.Controllers
 
             return comentario;
         }
-
+        /// <summary>
+        /// Tem a função de buscar na lista um comentário.
+        /// </summary>
+        /// <param name="id">Passa um id de um comentário.</param>
+        /// <param name="comentario">Passa um comentário para identificação.</param>
+        /// <returns>Retorna um comentário.</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<Comentario>> Put(int id, Comentario comentario){
 
@@ -78,7 +94,11 @@ namespace API_TechCycle.Controllers
 
             return comentario;
         } 
-
+        /// <summary>
+        /// Tem a função de exclúir um comentário na lista.
+        /// </summary>
+        /// <param name="id">Passa um id de um comentário.</param>
+        /// <returns>Retorna um comentário.</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<Comentario>> Delete(int id){
 
