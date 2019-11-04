@@ -119,7 +119,11 @@ namespace API_TechCycle.Controllers
 
             return anuncio;
         }
-
+        /// <summary>
+        /// Tem a função de filtrar por preço.
+        /// </summary>
+        /// <param name="preco">Passa um valor para o anúncio.</param>
+        /// <returns>Retorna todos os anúncios com o valor desejada.</returns>
         [HttpGet("buscarpreco/{preco}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorPreco(decimal preco){
 
@@ -130,7 +134,11 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
-
+        /// <summary>
+        /// Tem a função de filtrar por memório.
+        /// </summary>
+        /// <param name="memoria">Passa uma quantidade de memória.</param>
+        /// <returns>Retorna todos os produtos com a memória desejada.</returns>
         [HttpGet("buscarmemoria/{memoria}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoria(int memoria)
         {
@@ -143,7 +151,11 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
-
+        /// <summary>
+        /// Tem a função de filtrar pelo o processador o anúncio.
+        /// </summary>
+        /// <param name="processador">Passa o processador.</param>
+        /// <returns>Retorna lista de anúncios que possui esse processador.</returns>
         [HttpGet("buscarprocessador/{processador}")]
         public async Task<ActionResult<List<Anuncio>>> BuscaPorProcessador(string processador){
 
