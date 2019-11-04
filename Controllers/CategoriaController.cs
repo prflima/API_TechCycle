@@ -110,8 +110,14 @@ namespace API_TechCycle.Controllers
 
             if(categoria == null)
                 return NotFound("Categoria não existe!");
-            
-            await repositorio.Delete(categoria);
+            try
+            {
+                await repositorio.Delete(categoria);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
             return Ok(categoria);
         }
     }

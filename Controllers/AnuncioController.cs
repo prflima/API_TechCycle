@@ -39,7 +39,12 @@ namespace API_TechCycle.Controllers
 
             try{
 
-                return await repositorio.Get(id);
+                Anuncio anuncio = await repositorio.Get(id);
+                if(anuncio == null){
+                    return NotFound();
+                }
+
+                return anuncio;
             }catch(Exception){
                 throw;
             }
