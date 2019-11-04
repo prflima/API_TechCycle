@@ -106,5 +106,7 @@ namespace API_TechCycle.Repositorio
 
             return listaAnuncio;
         }
+
+        
     }
 }

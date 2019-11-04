@@ -13,12 +13,25 @@ namespace API_TechCycle.Repositorio
 
         public async Task<List<Comentario>> Get()
         {
-            return await context.Comentario.ToListAsync(); 
+            List<Comentario> listaComentarios = await context.Comentario.Include(anc => anc.IdAnuncioNavigation)
+                                                                        .Include(usr => usr.IdUsuarioNavigation)
+                                                                        .ToListAsync();
+                                                                        
+            foreach(var comentario in listaComentarios){
+                comentario.IdAnuncioNavigation.Comentario = null;
+                comentario.IdUsuarioNavigation.Comentario = null;
+            }
+
+            return listaComentarios;
         }
 
         public async Task<Comentario> Get(int id)
         {
-            return await context.Comentario.FindAsync(id);
+            Comentario comentario = await context.Comentario.Include(usr => usr.IdUsuarioNavigation)
+                                                    .Include(anc => anc.IdAnuncioNavigation)
+                                                    .FirstOrDefaultAsync(cmt => cmt.IdComentario == id); 
+
+            return comentario;
         }
 
         public async Task<Comentario> Post(Comentario comentario)
