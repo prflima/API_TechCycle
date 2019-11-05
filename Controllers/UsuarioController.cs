@@ -52,13 +52,20 @@ namespace API_TechCycle.Controllers
                 throw;
             } 
         }
+
+
         /// <summary>
         /// Tem a função de cadastrar um novo usuário na lista.
         /// </summary>
         /// <param name="usuario">Passa um usuário.</param>
         /// <returns>Retorna um usuário.</returns>
         [HttpPost]
-        public async Task<ActionResult<Usuario>> Post(Usuario usuario){
+        public async Task<ActionResult<Usuario>> Post(Usuario usuario)
+        {
+            Usuario validarUsuario = await repositorio.VerificarEmail(usuario.Email);
+            if(validarUsuario != null)
+                return BadRequest("Esse e-mail já está em uso!");
+
             try
             {
                await repositorio.Post(usuario);

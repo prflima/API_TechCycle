@@ -11,5 +11,6 @@ namespace API_TechCycle.Interfaces
          Task<Usuario> Post(Usuario usuario);
          Task<Usuario> Put(Usuario usuario);
          Task<Usuario> Delete(Usuario usuario);
+         Task<Usuario> VerificarEmail(string email);
     }
 }
