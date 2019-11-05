@@ -57,10 +57,6 @@ namespace API_TechCycle.Controllers
             } 
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e77da677b7482d3def4e2d4adedcb8dca11d5d13
         /// <summary>
         /// Tem a função de cadastrar um novo usuário na lista.
         /// </summary>
@@ -70,9 +66,13 @@ namespace API_TechCycle.Controllers
         [HttpPost]
         public async Task<ActionResult<Usuario>> Post(Usuario usuario)
         {
-            Usuario validarUsuario = await repositorio.VerificarEmail(usuario.Email);
-            if(validarUsuario != null)
+            Usuario validarEmail = await repositorio.VerificarEmail(usuario.Email);
+            if(validarEmail != null)
                 return BadRequest("Esse e-mail já está em uso!");
+
+            Usuario validarLogin = await repositorio.VerificarLogin(usuario.LoginUsuario);
+                if(validarLogin != null)
+                    return BadRequest("Esse login já está em uso!");
 
             try
             {

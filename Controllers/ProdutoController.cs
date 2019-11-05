@@ -253,7 +253,7 @@ namespace API_TechCycle.Controllers
         /// <param name="marca">Passa a marca.</param>
         /// <returns>Retorna todos os produtos que contenham o processador,memória e marca desejado.</returns>
 
-        [HttpGet("buscarprocessadormemoriamarca/{processador/{memoria}/{marca}}")]
+        [HttpGet("buscarprocessadormemoriamarca/{processador}/{memoria}/{marca}")]
         public async Task<ActionResult<List<Produto>>> BuscaProcessadorMemoriaMarca(string processador, int memoria, int marca)
         {
             try

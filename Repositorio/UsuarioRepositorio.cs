@@ -44,6 +44,12 @@ namespace API_TechCycle.Repositorio
         {
             Usuario usuario = await context.Usuario.Where(us => us.Email == email).FirstOrDefaultAsync();
             return usuario;
-;        }
+        }
+
+        public async Task<Usuario> VerificarLogin(string loginUsuario)
+        {
+            Usuario usuario = await context.Usuario.Where(us => us.LoginUsuario == loginUsuario).FirstOrDefaultAsync();
+            return usuario;
+        }        
     }
 }
