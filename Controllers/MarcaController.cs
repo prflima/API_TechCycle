@@ -15,10 +15,12 @@ namespace API_TechCycle.Controllers
     {
 
         MarcaRepositorio repositorio = new MarcaRepositorio();
+
         /// <summary>
         /// Tem a função de listar uma marca.
         /// </summary>
         /// <returns>Retorna uma lista de marca.</returns>
+        /// 
         [HttpGet]
         public async Task<ActionResult<List<Marca>>> Get(){
 
@@ -30,11 +32,13 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+
         /// <summary>
         /// Tem a função de buscar uma marca na lista.
         /// </summary>
         /// <param name="id">passa um id de uma marca.</param>
         /// <returns>Retorna uma marca.</returns>
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Marca>> Get(int id){
 
@@ -58,6 +62,7 @@ namespace API_TechCycle.Controllers
         /// </summary>
         /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna uma marca.</returns>
+        
         [HttpPost]
         public async Task<ActionResult<Marca>> Post(Marca marca){
 
@@ -71,12 +76,14 @@ namespace API_TechCycle.Controllers
 
             return marca;
         }
+
         /// <summary>
         /// Tem a função de atualizar uma marca.
         /// </summary>
         /// <param name="id">Passa um id de uma marca.</param>
         /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna a marca atualizada.</returns>
+        
         [HttpPut("{id}")]
         public async Task<ActionResult<Marca>> Put(int id, Marca marca){
 
@@ -101,11 +108,13 @@ namespace API_TechCycle.Controllers
 
             return marca;
         }
+
         /// <summary>
         /// Tem a função de excluír uma marca.
         /// </summary>
         /// <param name="id">Passa um id de uma marca.</param>
         /// <returns>Retorna a marca excluída.</returns>
+        
         [HttpDelete("{id}")]
         public async Task<ActionResult<Marca>> Delete(int id){
 

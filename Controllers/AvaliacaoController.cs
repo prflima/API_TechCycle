@@ -30,6 +30,7 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+        
         /// <summary>
         /// Tem a função de buscar uma avaliação na lista.
         /// </summary>

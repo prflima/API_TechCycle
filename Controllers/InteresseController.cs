@@ -14,10 +14,12 @@ namespace API_TechCycle.Controllers
     public class InteresseController : ControllerBase
     {
         InteresseRepositorio repositorio = new InteresseRepositorio();
+        
         /// <summary>
         /// Tem a função de listar um interesse.
         /// </summary>
         /// <returns>Retorna uma lista de interesse.</returns>
+
         [HttpGet]
         public async Task<ActionResult<List<Interesse>>> Get()
         {
@@ -30,11 +32,13 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+
         /// <summary>
         /// Tem a função de buscar um interesse na lista.
         /// </summary>
         /// <param name="id">Passa um id de um interesse</param>
         /// <returns>Retorna um interesse</returns>
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Interesse>> Get(int id)
         {
@@ -47,11 +51,13 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+
         /// <summary>
         /// Tem a função de cadastrar um novo interesse na lista.
         /// </summary>
         /// <param name="interesse">Passa um interesse.</param>
         /// <returns>Retorna um interesse.</returns>
+
         [HttpPost]
         public async Task<ActionResult<Interesse>> Post(Interesse interesse)
         {
@@ -66,12 +72,14 @@ namespace API_TechCycle.Controllers
 
             return interesse;
         }
+
         /// <summary>
         /// Tem a função de buscar na lista um interesse.
         /// </summary>
         /// <param name="id">Passa um id de um interesse.</param>
         /// <param name="interesse">Passa um interesse para identificação.</param>
         /// <returns>Retorna um interesse.</returns>
+
         [HttpPut("{id}")]
         public async Task<ActionResult<Interesse>> Put(int id, Interesse interesse)
         {
@@ -93,11 +101,13 @@ namespace API_TechCycle.Controllers
 
             return interesse;
         }
+
         /// <summary>
         /// Tem a função de exclúir um interesse na lista.
         /// </summary>
         /// <param name="id">Passa um id de um interesse.</param>
         /// <returns>Retorna um interesse.</returns>
+        /// 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Interesse>> Delete(int id)
         {
@@ -116,12 +126,14 @@ namespace API_TechCycle.Controllers
 
             return interesse;
         }
+
         /// <summary>
         /// Tem a função de buscar os interesses de um anúncio.
         /// </summary>
         /// <param name="idAnuncio">Passa o id de um anúncio.</param>
         /// <returns>Retorna uma lista de interesses em relação a um determinado anúncio.</returns>
-        [HttpGet("{idAnuncio}")]
+
+        [HttpGet("buscarinteresseanuncio/{idAnuncio}")]
         public async Task<ActionResult<List<Interesse>>> BuscarInteressePorAnuncio(int idAnuncio)
         {
             try
@@ -133,12 +145,14 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         } 
+  
         /// <summary>
         /// Tem a função de trazer a lista de aprovados.
         /// </summary>
         /// <param name="aprovacao">Passa uma Aprovação</param>
         /// <returns>Retorna um pedido aprovado.</returns>
-        [HttpGet("{aprovacao}")]
+        
+        [HttpGet("buscaraprovados/{aprovacao}")]
         public async Task<ActionResult<List<Interesse>>> BuscarInteresseAprovado(string aprovacao)
         {
             try
