@@ -25,7 +25,7 @@ namespace API_TechCycle.Repositorio
 
             return listaAnuncios;
         }     
-
+ 
         public async Task<Anuncio> Get(int id)
         {
             Anuncio anuncio = await context.Anuncio.Include(pdt => pdt.IdProdutoNavigation)
@@ -90,6 +90,166 @@ namespace API_TechCycle.Repositorio
 
             return listaAnuncio;
         }
+        
+        public async Task<List<Anuncio>> BuscarPorMemoriaEProcessador(int memoria, string processador)
+        {
+            List<Anuncio> listaAnuncio = await context.Anuncio
+                .Where(anc => anc.IdProdutoNavigation.Memoria == memoria && anc.IdProdutoNavigation.Processador == processador)
+                .Include(pdt => pdt.IdProdutoNavigation)
+                .Include(avl => avl.IdAvaliacaoNavigation)
+                .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }  
+
+            return listaAnuncio;
+        }
+
+        public async Task<List<Anuncio>> BuscarPorMemoriaECategoria(int memoria, int categoria)
+        {
+            List<Anuncio> listaAnuncio = await context.Anuncio
+                .Where(anc => anc.IdProdutoNavigation.Memoria == memoria && anc.IdProdutoNavigation.IdCategoria == categoria)
+                .Include(pdt => pdt.IdProdutoNavigation)
+                .Include(avl => avl.IdAvaliacaoNavigation)
+                .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }  
+
+            return listaAnuncio;
+        }
+
+        public async Task<List<Anuncio>> BuscarPorMemoriaEMarca(int memoria, int marca){
+
+            List<Anuncio> listaAnuncio = await context.Anuncio
+                    .Where(anc => anc.IdProdutoNavigation.Memoria == memoria && anc.IdProdutoNavigation.IdMarca == marca)
+                    .Include(pdt => pdt.IdProdutoNavigation)
+                    .Include(avl => avl.IdAvaliacaoNavigation)
+                    .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }
+
+            return listaAnuncio;
+        }
+
+        public async Task<List<Anuncio>> BuscarPorMemoriaCategoriaEMarca(int memoria, int categoria, int marca){
+
+            List<Anuncio> listaAnuncio = await context.Anuncio
+                    .Where(Anc => Anc.IdProdutoNavigation.Memoria == memoria && 
+                            Anc.IdProdutoNavigation.IdCategoria == categoria && 
+                            Anc.IdProdutoNavigation.IdMarca == marca)
+                    .Include(pdt => pdt.IdProdutoNavigation)
+                    .Include(avl => avl.IdAvaliacaoNavigation)
+                    .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }
+
+            return listaAnuncio;   
+        }
+
+        public async Task<List<Anuncio>> BuscarPorMemoriaProcessadorEMarca(int memoria, string processador, int marca){
+
+            List<Anuncio> listaAnuncio = await context.Anuncio
+                .Where(Anc => Anc.IdProdutoNavigation.Memoria == memoria &&
+                       Anc.IdProdutoNavigation.Processador == processador &&
+                       Anc.IdProdutoNavigation.IdMarca == marca)
+                .Include(pdt => pdt.IdProdutoNavigation)
+                .Include(avl => avl.IdAvaliacaoNavigation)
+                .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }
+
+            return listaAnuncio;
+        }
+
+        public async Task<List<Anuncio>> BuscarPorProcessadorECategoria(string processador, int categoria){
+            List<Anuncio> listaAnuncio = await context.Anuncio
+                .Where(Anc => Anc.IdProdutoNavigation.Processador == processador &&
+                       Anc.IdProdutoNavigation.IdCategoria == categoria)
+                .Include(pdt => pdt.IdProdutoNavigation)
+                .Include(avl => avl.IdAvaliacaoNavigation)
+                .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }
+
+            return listaAnuncio;
+        }
+
+        public async Task<List<Anuncio>> BuscarPorProcessadorEMarca(string processador, int marca){
+
+            List<Anuncio> listaAnuncio = await context.Anuncio
+                .Where(Anc => Anc.IdProdutoNavigation.Processador == processador &&
+                       Anc.IdProdutoNavigation.IdMarca == marca)
+                .Include(pdt => pdt.IdProdutoNavigation)
+                .Include(avl => avl.IdAvaliacaoNavigation)
+                .ToListAsync();
+            
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }
+
+            return listaAnuncio;
+        }
+        
+        public async Task<List<Anuncio>> BuscarPorProcessadorCategoriaEMarca(string processador, int categoria, int marca){
+            List<Anuncio> listaAnuncio = await context.Anuncio
+                .Where(Anc => Anc.IdProdutoNavigation.Processador == processador &&
+                       Anc.IdProdutoNavigation.IdCategoria == categoria &&
+                       Anc.IdProdutoNavigation.IdMarca == marca)
+                .Include(pdt => pdt.IdProdutoNavigation)
+                .Include(avl => avl.IdAvaliacaoNavigation)
+                .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }
+
+            return listaAnuncio;
+        } 
+
+        public async Task<List<Anuncio>> BuscarPorMemoriaCategoriaEProcessador(int memoria, int categoria, string processador)
+        {
+            List<Anuncio> listaAnuncio = await context.Anuncio
+                .Where(anc => anc.IdProdutoNavigation.Memoria == memoria && anc.IdProdutoNavigation.IdCategoria == categoria
+                                                                         && anc.IdProdutoNavigation.Processador == processador)
+                .Include(pdt => pdt.IdProdutoNavigation)
+                .Include(avl => avl.IdAvaliacaoNavigation)
+                .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio)
+            {
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }  
+
+            return listaAnuncio;
+        }
 
         public async Task<List<Anuncio>> BuscaPorProcessador(string processador){
 
@@ -107,6 +267,50 @@ namespace API_TechCycle.Repositorio
             return listaAnuncio;
         }
 
-        
+        public async Task<List<Anuncio>> BuscaPorCategoria(int categoria)
+        {
+            List<Anuncio> listaAnuncio = await context.Anuncio.Where(anc => anc.IdProdutoNavigation.IdCategoria == categoria)
+                                                              .Include(pdt => pdt.IdProdutoNavigation)
+                                                              .Include(avl => avl.IdAvaliacaoNavigation)
+                                                              .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio){
+                
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }
+
+            return listaAnuncio;
+        }
+    
+        public async Task<List<Anuncio>> BuscaPorCategoriaEMarca(int categoria, int marca){
+
+            List<Anuncio> listaAnuncio = await context.Anuncio.Where( anc => anc.IdProdutoNavigation.IdCategoria == categoria)
+                                                              .Include(pdt => pdt.IdProdutoNavigation)
+                                                              .Include(avl => avl.IdAvaliacaoNavigation)
+                                                              .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio){
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation.Anuncio = null;
+            }
+
+            return listaAnuncio;
+        }
+
+        public async Task<List<Anuncio>> BuscarPorMarca(int marca){
+
+            List<Anuncio> listaAnuncio = await context.Anuncio.Where(anc => anc.IdProdutoNavigation.IdMarca == marca)
+                                                              .Include(Produto => Produto.IdProdutoNavigation)
+                                                              .Include(avl => avl.IdAvaliacaoNavigation)
+                                                              .ToListAsync();
+
+            foreach(var anuncio in listaAnuncio){
+                anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdAvaliacaoNavigation = null;
+            }
+
+            return listaAnuncio;
+        }
     }
 }

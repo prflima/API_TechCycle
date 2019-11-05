@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+// using Microsoft.AspNetCore.Authentication.JwtBearer;
+>>>>>>> e77da677b7482d3def4e2d4adedcb8dca11d5d13
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +15,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+<<<<<<< HEAD
+=======
+// using Microsoft.IdentityModel.Tokens;
+>>>>>>> e77da677b7482d3def4e2d4adedcb8dca11d5d13
 using Newtonsoft.Json;
 
 namespace API_TechCycle
