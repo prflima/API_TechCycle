@@ -123,5 +123,134 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+
+        [HttpGet("buscarcategoria/{idCategoria}")]
+        public async Task<ActionResult<List<Produto>>> BuscaPorCategoria(int idCategoria)
+        {
+            try
+            {
+                return await repositorio.BuscaPorCategoria(idCategoria);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("buscarmarca/{marca}")]
+        public async Task<ActionResult<List<Produto>>> BuscaPorMarca(int marca)
+        {
+            try
+            {
+                return await repositorio.BuscaPorMarca(marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("buscarprocessadorememoria/{processador}/{memoria}")]
+        public async Task<ActionResult<List<Produto>>> BuscaProcessadorEMemoria(string processador, int memoria)
+        {
+            try
+            {
+                return await repositorio.BuscaProcessadorEMemoria(processador, memoria);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("buscarprocessadormemoriaecategoria/{processador}/{memoria}/{categoria}")]
+        public async Task<ActionResult<List<Produto>>> BuscaProcessadorMemoriaCategoria(string processador, int memoria, int categoria)
+        {
+            try
+            {
+                return await repositorio.BuscaProcessadorMemoriaCategoria(processador, memoria, categoria);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("buscarprocessadormemoriamarca/{processador/{memoria}/{marca}}")]
+        public async Task<ActionResult<List<Produto>>> BuscaProcessadorMemoriaMarca(string processador, int memoria, int marca)
+        {
+            try
+            {
+                return await repositorio.BuscaProcessadorMemoriaMarca(processador, memoria, marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+    
+        [HttpGet("buscarprocessadormemoriacategoriamarca/{processador}/{memoria}/{categoria}/{marca}")]
+        public async Task<ActionResult<List<Produto>>> BuscaProcessadorMemoriaCategoriaMarca(string processador , int memoria , int categoria , int marca)
+        {
+            try
+            {
+                return await repositorio.BuscaProcessadorMemoriaCategoriaMarca(processador , memoria , categoria , marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+        [HttpGet("buscarmemoriacategoria/{memoria}/{categoria}")]
+        public async Task<ActionResult<List<Produto>>> BuscarMemoriaCategoria(int memoria , int categoria)
+        {
+            try
+            {
+                return await repositorio.BuscaMemoriaCategoria(memoria , categoria);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("buscarmemoriamarca/{memoria}/{marca}")]
+        public async Task<ActionResult<List<Produto>>> BuscarMemoriaMarca(int memoria, int marca)
+        {
+            try
+            {
+                return await repositorio.BuscaMemoriaMarca(memoria,marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("buscarmemoriamarcacategoria/{memoria}/{marca}/{categoria}")]
+        public async Task<ActionResult<List<Produto>>> BuscaMemoriaMarcaCategoria(int memoria, int marca,int categoria)
+        {
+            try
+            {
+                return await repositorio.BuscaMemoriaMarcaCategoria(memoria, marca, categoria);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("buscarcategoriamarca/{categoria}/{marca}")]
+        public async Task<ActionResult<List<Produto>>> BuscaCategoriaMarca(int categoria, int marca)
+        {
+            try
+            {
+                return await repositorio.BuscaCategoriaMarca(categoria, marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -97,7 +97,7 @@ namespace API_TechCycle.Controllers
             return interesse;
         }
 
-        [HttpGet("{idAnuncio}")]
+        [HttpGet("buscarinteresseanuncio/{idAnuncio}")]
         public async Task<ActionResult<List<Interesse>>> BuscarInteressePorAnuncio(int idAnuncio)
         {
             try
@@ -110,7 +110,7 @@ namespace API_TechCycle.Controllers
             }
         } 
 
-        [HttpGet("{aprovacao}")]
+        [HttpGet("buscaraprovados/{aprovacao}")]
         public async Task<ActionResult<List<Interesse>>> BuscarInteresseAprovado(string aprovacao)
         {
             try

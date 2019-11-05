@@ -88,5 +88,161 @@ namespace API_TechCycle.Repositorio
 
             return listaProdutos;
         }
+
+        public async Task<List<Produto>> BuscaPorCategoria(int categoria)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.IdCategoria == categoria)
+                                                              .Include(mr => mr.IdMarcaNavigation)
+                                                              .Include(ct => ct.IdCategoriaNavigation)
+                                                              .ToListAsync();
+
+            foreach(var produto in listaProduto)
+            {
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+            }
+
+            return listaProduto;                                                               
+        }
+
+        public async Task<List<Produto>> BuscaPorMarca(int marca)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.IdMarca == marca)
+                                                              .Include(mr => mr.IdMarcaNavigation)
+                                                              .Include(ct => ct.IdCategoriaNavigation)
+                                                              .ToListAsync();
+            
+            foreach(var produto in listaProduto)
+            {
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+            }
+
+            return listaProduto;
+        }
+        public async Task<List<Produto>> BuscaProcessadorEMemoria(string processador, int memoria)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.Processador == processador && pr.Memoria == memoria)
+                                                              .Include(mr => mr.IdMarcaNavigation)
+                                                              .Include(ct => ct.IdCategoriaNavigation)
+                                                              .ToListAsync();
+
+            foreach(var produto in listaProduto)
+            {
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+            }
+
+            return listaProduto;                                                              
+        }
+
+        public async Task<List<Produto>> BuscaProcessadorMemoriaCategoria(string processador, int memoria, int categoria)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.Processador == processador && pr.Memoria == memoria && pr.IdCategoria == categoria)
+                                                              .Include(mr => mr.IdMarcaNavigation)
+                                                              .Include(ct => ct.IdCategoriaNavigation)
+                                                              .ToListAsync();
+
+            foreach(var produto in listaProduto)
+            {
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+            }
+
+            return listaProduto;
+        }
+        
+        public async Task<List<Produto>> BuscaProcessadorMemoriaMarca(string processador, int memoria, int marca)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.Processador == processador && pr.Memoria == memoria && pr.IdMarca == marca)
+                                                              .Include(mr => mr.IdMarcaNavigation)
+                                                              .Include(ct => ct.IdCategoriaNavigation)
+                                                              .ToListAsync();
+
+            foreach(var produto in listaProduto)
+            {
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+            }
+
+            return listaProduto;                                                              
+        }
+        public async Task<List<Produto>> BuscaProcessadorMemoriaCategoriaMarca(string processador, int memoria, int categoria , int marca)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.Processador == processador && pr.Memoria == memoria && pr.IdCategoria == categoria && pr.IdMarca == marca)
+                                                                .Include(mr => mr.IdMarcaNavigation)
+                                                                .Include(ct => ct.IdCategoriaNavigation)
+                                                                .ToListAsync();
+            foreach(var produto in listaProduto)
+            {
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+            }
+            return listaProduto;
+        }   
+    
+        public async Task<List<Produto>> BuscaMemoriaCategoria(int memoria , int categoria)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.Memoria == memoria && pr.IdCategoria == categoria)
+                                                                .Include(mr => mr.IdMarcaNavigation)
+                                                                .Include(ct => ct.IdCategoriaNavigation)
+                                                                .ToListAsync();
+            foreach(var produto in listaProduto)
+            {
+
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+
+            }
+            return listaProduto;
+        }
+
+        public async Task<List<Produto>> BuscaMemoriaMarca(int memoria, int marca)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.Memoria == memoria && pr.IdMarca == marca)
+                                                              .Include(mr => mr.IdMarcaNavigation)
+                                                              .Include(ct => ct.IdCategoriaNavigation)
+                                                              .ToListAsync();
+
+            foreach(var produto in listaProduto)
+            {
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+            }
+
+            return listaProduto;                                                    
+        }
+
+        public async Task<List<Produto>> BuscaMemoriaMarcaCategoria(int memoria, int marca, int categoria)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.Memoria == memoria && pr.IdMarca == marca && pr.IdCategoria == categoria)
+                                                              .Include(mr => mr.IdMarcaNavigation)
+                                                              .Include(ct => ct.IdCategoriaNavigation)
+                                                              .ToListAsync();
+
+            foreach(var produto in listaProduto)
+            {
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+            }                                                
+
+            return listaProduto;            
+        }
+
+        public async Task<List<Produto>> BuscaCategoriaMarca(int categoria, int marca)
+        {
+            List<Produto> listaProduto = await context.Produto.Where(pr => pr.IdCategoria == categoria && pr.IdMarca == marca)
+                                                              .Include(mr => mr.IdMarcaNavigation)
+                                                              .Include(ct => ct.IdCategoriaNavigation)
+                                                              .ToListAsync();
+
+            foreach(var produto in listaProduto)
+            {
+                produto.IdMarcaNavigation.Produto = null;
+                produto.IdCategoriaNavigation.Produto = null;
+            }                                                
+
+            return listaProduto;
+        }
     }
 }
