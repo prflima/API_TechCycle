@@ -61,7 +61,7 @@ namespace API_TechCycle.Repositorio
 
         public async Task<List<Anuncio>> BuscaPorPreco(decimal preco)
         {
-            List<Anuncio> listaAnuncios = await context.Anuncio.Where(anc => anc.Preco == preco)
+            List<Anuncio> listaAnuncios = await context.Anuncio.Where(anc => anc.Preco <= preco)
                                                                 .Include(pdt => pdt.IdProdutoNavigation)
                                                                 .Include(avl => avl.IdAvaliacaoNavigation)
                                                                 .ToListAsync();
