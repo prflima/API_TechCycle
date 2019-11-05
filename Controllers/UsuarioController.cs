@@ -14,7 +14,10 @@ namespace API_TechCycle.Controllers
     public class UsuarioController : ControllerBase
     {
         UsuarioRepositorio repositorio = new UsuarioRepositorio();
-
+        /// <summary>
+        /// Tem a função de trazer uma lista de usuário.
+        /// </summary>
+        /// <returns>Retorna uma lista de usuário</returns>
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> Get()
         {
@@ -28,6 +31,11 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+        /// <summary>
+        /// Tem a função de buscar um usuário na lista.
+        /// </summary>
+        /// <param name="id">Passa um id de um usuário</param>
+        /// <returns>Retorna um usuário</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Usuario>> Get(int id){
 
@@ -44,6 +52,11 @@ namespace API_TechCycle.Controllers
                 throw;
             } 
         }
+        /// <summary>
+        /// Tem a função de cadastrar um novo usuário na lista.
+        /// </summary>
+        /// <param name="usuario">Passa um usuário.</param>
+        /// <returns>Retorna um usuário.</returns>
         [HttpPost]
         public async Task<ActionResult<Usuario>> Post(Usuario usuario){
             try
@@ -56,6 +69,12 @@ namespace API_TechCycle.Controllers
             }
             return usuario;
         }
+        /// <summary>
+        /// Tem a função de buscar na lista um usuário.
+        /// </summary>
+        /// <param name="id">Passa um id de um usuário.</param>
+        /// <param name="usuario">Passa um usuário para identificação.</param>
+        /// <returns>Retorna um usuário.</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<Usuario>> Put(int id , Usuario usuario){
              if(id != usuario.IdUsuario){
@@ -75,6 +94,11 @@ namespace API_TechCycle.Controllers
                 }
              return usuario;
              }
+            /// <summary>
+            /// Tem a função excluír um usuário da lista.
+            /// </summary>
+            /// <param name="id">Passa um id do usuário.</param>
+            /// <returns>Retorna um usuário</returns>
             [HttpDelete("{id}")]
             public async Task<ActionResult<Usuario>> Delete(int id){
                 Usuario usuario = await repositorio.Get(id);

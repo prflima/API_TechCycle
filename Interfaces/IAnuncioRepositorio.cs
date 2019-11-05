@@ -21,5 +21,9 @@ namespace API_TechCycle.Interfaces
          Task<List<Anuncio>> BuscaPorMemoria(int memoria);
 
          Task<List<Anuncio>> BuscaPorProcessador(string processador);
+
+         Task<List<Anuncio>> BuscaPorCategoria(int categoria);
+
+
     }
 }
