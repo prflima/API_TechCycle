@@ -57,10 +57,6 @@ namespace API_TechCycle.Controllers
             } 
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e77da677b7482d3def4e2d4adedcb8dca11d5d13
         /// <summary>
         /// Tem a função de cadastrar um novo usuário na lista.
         /// </summary>
