@@ -29,6 +29,8 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+        
+        
         /// <summary>
         /// Tem a função de buscar um anúncio na lista.
         /// </summary>
@@ -50,6 +52,8 @@ namespace API_TechCycle.Controllers
             }
         }
 
+        
+        
         /// <summary>
         /// Tem a função de cadastrar um novo anúncio na lista.
         /// </summary>
@@ -71,6 +75,9 @@ namespace API_TechCycle.Controllers
 
             return anuncio;
         }   
+        
+        
+        
         /// <summary>
         /// Tem a função de buscar na lista um anúncio.
         /// </summary>
@@ -101,6 +108,9 @@ namespace API_TechCycle.Controllers
 
             return anuncio;
         }
+        
+        
+        
         /// <summary>
         /// Tem a função de exclúir um anúncio na lista.
         /// </summary>
@@ -124,6 +134,9 @@ namespace API_TechCycle.Controllers
 
             return anuncio;
         }
+        
+        
+        
         /// <summary>
         /// Tem a função de filtrar por preço.
         /// </summary>
@@ -139,6 +152,9 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+        
+        
+        
         /// <summary>
         /// Tem a função de filtrar por memório.
         /// </summary>
@@ -156,6 +172,147 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+
+        
+        
+        
+        [HttpGet("buscarmemo_cat/{memoria}/{categoria}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaECategoria(int memoria, int categoria)
+        {
+            try
+            {
+                return await repositorio.BuscarPorMemoriaECategoria(memoria, categoria);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        
+        
+        
+        [HttpGet("buscarmemo_proc/{memoria}/{processador}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaEProcessador(int memoria, string processador)
+        {
+            try
+            {
+                return await repositorio.BuscarPorMemoriaEProcessador(memoria, processador);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        
+        
+        
+        [HttpGet("buscarmemo_marc/{memoria}/{marca}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaEMarca(int memoria, int marca)
+        {
+            try
+            {
+                return await repositorio.BuscarPorMemoriaEMarca(memoria, marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+
+        
+        [HttpGet("buscarmemo_cat_marc/{memoria}/{categoria}/{marca}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarMemoriaCategoriaEMarca(int memoria, int categoria, int marca){
+
+            try
+            {
+                return await repositorio.BuscarPorMemoriaCategoriaEMarca(memoria, categoria, marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        
+        
+        [HttpGet("buscaproc_cat/{processador}/{categoria}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorProcessadorECategoria(string processador, int categoria){
+            
+            try
+            {
+                return await repositorio.BuscarPorProcessadorECategoria(processador, categoria);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        
+        
+        [HttpGet("buscaproc_marc/{processador}/{marca}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorProcessadorEMarca(string processador, int marca){
+
+            try
+            {
+                return await repositorio.BuscarPorProcessadorEMarca(processador, marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        
+        
+        [HttpGet("buscaproc_cat_marc/{processador}/{categoria}/{marca}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorProcessadorCategoriaEMarca(string processador, int categoria, int marca){
+
+            try
+            {
+                return await repositorio.BuscarPorProcessadorCategoriaEMarca(processador, categoria, marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+       
+       
+        [HttpGet("buscarmemo_proc_marc/{memoria}/{processador}/{marca}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaProcessadorEMarca(int memoria, string processador, int marca){
+
+            try
+            {
+                return await repositorio.BuscarPorMemoriaProcessadorEMarca(memoria, processador, marca);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        
+        
+        [HttpGet("buscarmemo_cat_proc/{memoria}/{categoria}/{processador}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaCategoriaEProcessador(int memoria, int categoria, string processador)
+        {
+            try
+            {
+                return await repositorio.BuscarPorMemoriaCategoriaEProcessador(memoria, categoria, processador);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+             
+        
         /// <summary>
         /// Tem a função de filtrar pelo o processador o anúncio.
         /// </summary>
@@ -167,6 +324,44 @@ namespace API_TechCycle.Controllers
             try{
 
                 return await repositorio.BuscaPorProcessador(processador);
+            }catch(Exception){
+                throw;
+            }
+        }
+
+
+
+        [HttpGet("buscarcategoria/{categoria}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscarPorCategoria(int categoria){
+
+            try{
+
+                return await repositorio.BuscaPorCategoria(categoria);
+            }catch(Exception){
+                throw;
+            }
+        }
+    
+    
+
+        [HttpGet("buscacat_marc/{categoria}/{marca}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscaPorCategoriaEMarca(int categoria, int marca){
+
+            try{
+
+                return await repositorio.BuscaPorCategoriaEMarca(categoria, marca);
+            }catch(Exception){
+                throw;
+            }
+        }
+
+
+        [HttpGet("buscarmarca/{marca}")]
+        public async Task<ActionResult<List<Anuncio>>> BuscaPorMarca(int marca){
+
+            try{
+
+                return await repositorio.BuscarPorMarca(marca);
             }catch(Exception){
                 throw;
             }
