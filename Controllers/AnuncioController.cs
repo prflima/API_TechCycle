@@ -108,6 +108,7 @@ namespace API_TechCycle.Controllers
 
             return anuncio;
         }
+
         /// <summary>
         /// Tem a função de exclúir um anúncio na lista.
         /// </summary>
@@ -132,6 +133,7 @@ namespace API_TechCycle.Controllers
 
             return anuncio;
         }
+
         /// <summary>
         /// Tem a função de filtrar por preço.
         /// </summary>
@@ -148,6 +150,7 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+
         /// <summary>
         /// Tem a função de filtrar por memório.
         /// </summary>
@@ -167,6 +170,13 @@ namespace API_TechCycle.Controllers
             }
         }
      
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por memoria e categoria.
+        /// </summary>
+        /// <param name="memoria">Passa a memória.</param>
+        /// <param name="categoria">Passa a categoria</param>
+        /// <returns>Retorna todos os anúncios que contenha a memória e categoria desejada.</returns>
+
         [HttpGet("buscarmemo_cat/{memoria}/{categoria}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaECategoria(int memoria, int categoria)
         {
@@ -181,8 +191,12 @@ namespace API_TechCycle.Controllers
         }
 
         
-        
-        
+        /// <summary>
+        /// Tem função de filtrar anúncios por memória e processador.
+        /// </summary>
+        /// <param name="memoria">Passa a memória.</param>
+        /// <param name="processador">Passa o processador.</param>
+        /// <returns>Retorna todos os anúncios que contenham memória e processador desejado. </returns>
         [HttpGet("buscarmemo_proc/{memoria}/{processador}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaEProcessador(int memoria, string processador)
         {
@@ -197,8 +211,12 @@ namespace API_TechCycle.Controllers
         }
 
         
-        
-        
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por memória e marca.
+        /// </summary>
+        /// <param name="memoria">Passa a memória</param>
+        /// <param name="marca">Passa a marca.</param>
+        /// <returns>Retorna todos os anúncios que contenham a memória e marca desejada.</returns>
         [HttpGet("buscarmemo_marc/{memoria}/{marca}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaEMarca(int memoria, int marca)
         {
@@ -212,8 +230,13 @@ namespace API_TechCycle.Controllers
             }
         }
 
-
-        
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por memória,categoria e marca.
+        /// </summary>
+        /// <param name="memoria">Passa a memória.</param>
+        /// <param name="categoria">Passa a categoria.</param>
+        /// <param name="marca">Passa a marca.</param>
+        /// <returns>Retorna todos os anúncios que contenham a memória,categoria e marca desejada.</returns>
         [HttpGet("buscarmemo_cat_marc/{memoria}/{categoria}/{marca}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarMemoriaCategoriaEMarca(int memoria, int categoria, int marca){
 
@@ -227,8 +250,12 @@ namespace API_TechCycle.Controllers
             }
         }
 
-        
-        
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por processador e categoria.
+        /// </summary>
+        /// <param name="processador">Passa o processador.</param>
+        /// <param name="categoria">Passa a categoria</param>
+        /// <returns>Retorna todos os anúncios que contenham o processador e categoria desejada.</returns>
         [HttpGet("buscaproc_cat/{processador}/{categoria}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorProcessadorECategoria(string processador, int categoria){
             
@@ -242,8 +269,12 @@ namespace API_TechCycle.Controllers
             }
         }
 
-        
-        
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por procesador e marca. 
+        /// </summary>
+        /// <param name="processador">Passa um processador.</param>
+        /// <param name="marca">Passa uma marca</param>
+        /// <returns>Retorna todos os anúncios que contenham o processador e marca desejada.</returns>
         [HttpGet("buscaproc_marc/{processador}/{marca}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorProcessadorEMarca(string processador, int marca){
 
@@ -257,8 +288,13 @@ namespace API_TechCycle.Controllers
             }
         }
 
-        
-        
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por processador,categoria e marca.
+        /// </summary>
+        /// <param name="processador">Passa processador.</param>
+        /// <param name="categoria">Passa categoria.</param>
+        /// <param name="marca">Passa marca.</param>
+        /// <returns>Retorna todos os anúncios que contenham o processador,categoria e marca desejada.</returns>
         [HttpGet("buscaproc_cat_marc/{processador}/{categoria}/{marca}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorProcessadorCategoriaEMarca(string processador, int categoria, int marca){
 
@@ -272,8 +308,13 @@ namespace API_TechCycle.Controllers
             }
         }
 
-       
-       
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por memória,processador e marca.
+        /// </summary>
+        /// <param name="memoria">Passa memória.</param>
+        /// <param name="processador">Passa processador.</param>
+        /// <param name="marca">Passa marca.</param>
+        /// <returns>Retorna todos os anúncios que contenham a memória,processador e marca desejada.</returns>       
         [HttpGet("buscarmemo_proc_marc/{memoria}/{processador}/{marca}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaProcessadorEMarca(int memoria, string processador, int marca){
 
@@ -287,8 +328,13 @@ namespace API_TechCycle.Controllers
             }
         }
 
-        
-        
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por memória,categoria e processador.
+        /// </summary>
+        /// <param name="memoria">Passa a memória</param>
+        /// <param name="categoria">Passa a categoria</param>
+        /// <param name="processador">Passa o processador</param>
+        /// <returns>Retorna todos os anúncios que contenham a memória,categoria e processador desejado.</returns>
         [HttpGet("buscarmemo_cat_proc/{memoria}/{categoria}/{processador}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorMemoriaCategoriaEProcessador(int memoria, int categoria, string processador)
         {
@@ -301,6 +347,7 @@ namespace API_TechCycle.Controllers
                 throw;
             }
         }
+
         /// <summary>
         /// Tem a função de filtrar pelo o processador o anúncio.
         /// </summary>
@@ -318,7 +365,11 @@ namespace API_TechCycle.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por categoria.
+        /// </summary>
+        /// <param name="categoria">Passa a categoria.</param>
+        /// <returns>Retorna todos os anúncios que contenham a categoria desejada.</returns>
 
         [HttpGet("buscarcategoria/{categoria}")]
         public async Task<ActionResult<List<Anuncio>>> BuscarPorCategoria(int categoria){
@@ -331,7 +382,12 @@ namespace API_TechCycle.Controllers
             }
         }
     
-    
+        /// <summary>
+        /// Tem a função de filtrar os anúncios por categoria e marca.
+        /// </summary>
+        /// <param name="categoria">Passa uma categoria.</param>
+        /// <param name="marca">Passa uma marca.</param>
+        /// <returns></returns>
 
         [HttpGet("buscacat_marc/{categoria}/{marca}")]
         public async Task<ActionResult<List<Anuncio>>> BuscaPorCategoriaEMarca(int categoria, int marca){
@@ -344,6 +400,11 @@ namespace API_TechCycle.Controllers
             }
         }
 
+        /// <summary>
+        /// Tem a função de  filtra os anúncios por marca.
+        /// </summary>
+        /// <param name="marca">Passa uma marca</param>
+        /// <returns>Retorna todos os anúncios que contenham a marca desejada.</returns>
 
         [HttpGet("buscarmarca/{marca}")]
         public async Task<ActionResult<List<Anuncio>>> BuscaPorMarca(int marca){

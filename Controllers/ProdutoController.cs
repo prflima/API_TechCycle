@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_TechCycle.Models;
 using API_TechCycle.Repositorio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,7 @@ namespace API_TechCycle.Controllers
         /// Tem a função de trazer uma lista de produto.
         /// </summary>
         /// <returns>Retorna uma lista de produto</returns>
-
+        [Authorize(Roles="Administrador")]
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> get()
         {
