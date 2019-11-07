@@ -40,6 +40,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">Passa um id de um produto</param>
         /// <returns>Retorna um Produto</returns>
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> Get(int id)
         {
@@ -59,6 +60,7 @@ namespace API_TechCycle.Controllers
         /// <param name="produto">Passa um produto.</param>
         /// <returns>Retorna um produto.</returns>
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public async Task<ActionResult<Produto>> Post(Produto produto)
         {
@@ -83,6 +85,7 @@ namespace API_TechCycle.Controllers
         /// <param name="produto">Passa um Produto para identificação.</param>
         /// <returns>Retorna um produto.</returns>
 
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public async Task<ActionResult<Produto>> Put(int id, Produto produto)
         {
@@ -110,6 +113,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">Passa um id do produto.</param>
         /// <returns>Retorna um produto</returns>
         
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Produto>> Delete(int id)
         {
@@ -135,6 +139,7 @@ namespace API_TechCycle.Controllers
         /// <param name="memoria">Passa uma quantidade de memória.</param>
         /// <returns>Retorna todos os produtos que contenham a memória desejada.</returns>
         
+        [Authorize(Roles = "Administrador")]
         [HttpGet("buscarmemoria/{memoria}")]
         public async Task<ActionResult<List<Produto>>> BuscaPorMemoria(int memoria)
         {
@@ -154,6 +159,7 @@ namespace API_TechCycle.Controllers
         /// <param name="processador">Passa um processador.</param>
         /// <returns>Retorna todos os produtos que contenham o processador desejado.</returns>
 
+        [Authorize]
         [HttpGet("buscarprocessador/{processador}")]
         public async Task<ActionResult<List<Produto>>> BuscaPorProcessador(string processador)
         {
@@ -173,6 +179,7 @@ namespace API_TechCycle.Controllers
         /// <param name="idCategoria">Passa um categoria.</param>
         /// <returns>Retorna todos os produtos que contenham a categoria desejado.</returns>
 
+        [Authorize]
         [HttpGet("buscarcategoria/{idCategoria}")]
         public async Task<ActionResult<List<Produto>>> BuscaPorCategoria(int idCategoria)
         {
@@ -192,6 +199,7 @@ namespace API_TechCycle.Controllers
         /// <param name="marca">Passa um marca.</param>
         /// <returns>Retorna todos os produtos que contenham a marca desejada.</returns>
 
+        [Authorize]
         [HttpGet("buscarmarca/{marca}")]
         public async Task<ActionResult<List<Produto>>> BuscaPorMarca(int marca)
         {
@@ -212,6 +220,7 @@ namespace API_TechCycle.Controllers
         /// <param name="memoria">Passa uma quantidade de memória.</param>
         /// <returns>Retorna todos os produtos que contenham o processador e memória desejada</returns>
 
+        [Authorize]
         [HttpGet("buscarprocessadorememoria/{processador}/{memoria}")]
         public async Task<ActionResult<List<Produto>>> BuscaProcessadorEMemoria(string processador, int memoria)
         {
@@ -233,6 +242,7 @@ namespace API_TechCycle.Controllers
         /// <param name="categoria">Passa a categoria.</param>
         /// <returns>Retorna todos os produtos que contenham o processador,memória e categoria desejada.</returns>
 
+        [Authorize]
         [HttpGet("buscarprocessadormemoriaecategoria/{processador}/{memoria}/{categoria}")]
         public async Task<ActionResult<List<Produto>>> BuscaProcessadorMemoriaCategoria(string processador, int memoria, int categoria)
         {
@@ -254,6 +264,7 @@ namespace API_TechCycle.Controllers
         /// <param name="marca">Passa a marca.</param>
         /// <returns>Retorna todos os produtos que contenham o processador,memória e marca desejado.</returns>
 
+        [Authorize]
         [HttpGet("buscarprocessadormemoriamarca/{processador}/{memoria}/{marca}")]
         public async Task<ActionResult<List<Produto>>> BuscaProcessadorMemoriaMarca(string processador, int memoria, int marca)
         {
@@ -276,6 +287,7 @@ namespace API_TechCycle.Controllers
         /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna todos os produtos que contenham o processador,memória,categoria e marca desejado.</returns>
 
+        [Authorize]
         [HttpGet("buscarprocessadormemoriacategoriamarca/{processador}/{memoria}/{categoria}/{marca}")]
         public async Task<ActionResult<List<Produto>>> BuscaProcessadorMemoriaCategoriaMarca(string processador , int memoria , int categoria , int marca)
         {
@@ -296,6 +308,7 @@ namespace API_TechCycle.Controllers
         /// <param name="categoria">Passa uma categoria.</param>
         /// <returns>Retorna todos os produtos que contenham a memória e categoria desejada.</returns>
 
+        [Authorize]
         [HttpGet("buscarmemoriacategoria/{memoria}/{categoria}")]
         public async Task<ActionResult<List<Produto>>> BuscarMemoriaCategoria(int memoria , int categoria)
         {
@@ -316,6 +329,7 @@ namespace API_TechCycle.Controllers
         /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna todos os produtos que contenham a memória e marca desejada.</returns>
 
+        [Authorize]
         [HttpGet("buscarmemoriamarca/{memoria}/{marca}")]
         public async Task<ActionResult<List<Produto>>> BuscarMemoriaMarca(int memoria, int marca)
         {
@@ -337,6 +351,7 @@ namespace API_TechCycle.Controllers
         /// <param name="categoria">Passa uma categoria.</param>
         /// <returns>Retorna todos os produtos que contenham a memória,marca e categoria desejada.</returns>
 
+        [Authorize]
         [HttpGet("buscarmemoriamarcacategoria/{memoria}/{marca}/{categoria}")]
         public async Task<ActionResult<List<Produto>>> BuscaMemoriaMarcaCategoria(int memoria, int marca,int categoria)
         {
@@ -357,6 +372,7 @@ namespace API_TechCycle.Controllers
         /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna todos os produtos que contenham a categoria e marca desejada.</returns>
 
+        [Authorize]
         [HttpGet("buscarcategoriamarca/{categoria}/{marca}")]
         public async Task<ActionResult<List<Produto>>> BuscaCategoriaMarca(int categoria, int marca)
         {

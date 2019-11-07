@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_TechCycle.Models;
 using API_TechCycle.Repositorio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,7 @@ namespace API_TechCycle.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de usuário</returns>
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> Get()
         {
@@ -40,6 +42,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">Passa um id de um usuário</param>
         /// <returns>Retorna um usuário</returns>
         
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Usuario>> Get(int id){
 
@@ -63,6 +66,8 @@ namespace API_TechCycle.Controllers
         /// <param name="usuario">Passa um usuário.</param>
         /// <returns>Retorna um usuário.</returns>
         
+        [Authorize] /*Fiquei na duvida porque o proprio usuario a principio tem o direito 
+                      de se cadastrar */
         [HttpPost]
         public async Task<ActionResult<Usuario>> Post(Usuario usuario)
         {
@@ -92,6 +97,7 @@ namespace API_TechCycle.Controllers
         /// <param name="usuario">Passa um usuário para identificação.</param>
         /// <returns>Retorna um usuário.</returns>
         
+        [Authorize] /*Porque o proprio usuario pode atualizar seu perfil */
         [HttpPut("{id}")]
         public async Task<ActionResult<Usuario>> Put(int id , Usuario usuario){
              if(id != usuario.IdUsuario){
@@ -118,6 +124,7 @@ namespace API_TechCycle.Controllers
             /// <param name="id">Passa um id do usuário.</param>
             /// <returns>Retorna um usuário</returns>
             
+            [Authorize] /*O proprio usuario poderia excluir sua conta */
             [HttpDelete("{id}")]
             public async Task<ActionResult<Usuario>> Delete(int id){
                 Usuario usuario = await repositorio.Get(id);

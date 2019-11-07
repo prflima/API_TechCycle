@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_TechCycle.Models;
 using API_TechCycle.Repositorio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,7 @@ namespace API_TechCycle.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de interesse.</returns>
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Interesse>>> Get()
         {
@@ -39,6 +41,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">Passa um id de um interesse</param>
         /// <returns>Retorna um interesse</returns>
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Interesse>> Get(int id)
         {
@@ -58,6 +61,7 @@ namespace API_TechCycle.Controllers
         /// <param name="interesse">Passa um interesse.</param>
         /// <returns>Retorna um interesse.</returns>
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Interesse>> Post(Interesse interesse)
         {
@@ -80,6 +84,7 @@ namespace API_TechCycle.Controllers
         /// <param name="interesse">Passa um interesse para identificação.</param>
         /// <returns>Retorna um interesse.</returns>
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<Interesse>> Put(int id, Interesse interesse)
         {
@@ -107,7 +112,8 @@ namespace API_TechCycle.Controllers
         /// </summary>
         /// <param name="id">Passa um id de um interesse.</param>
         /// <returns>Retorna um interesse.</returns>
-        /// 
+        
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Interesse>> Delete(int id)
         {
@@ -133,6 +139,7 @@ namespace API_TechCycle.Controllers
         /// <param name="idAnuncio">Passa o id de um anúncio.</param>
         /// <returns>Retorna uma lista de interesses em relação a um determinado anúncio.</returns>
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet("buscarinteresseanuncio/{idAnuncio}")]
         public async Task<ActionResult<List<Interesse>>> BuscarInteressePorAnuncio(int idAnuncio)
         {
@@ -152,6 +159,7 @@ namespace API_TechCycle.Controllers
         /// <param name="aprovacao">Passa uma Aprovação</param>
         /// <returns>Retorna um pedido aprovado.</returns>
         
+        [Authorize]
         [HttpGet("buscaraprovados/{aprovacao}")]
         public async Task<ActionResult<List<Interesse>>> BuscarInteresseAprovado(string aprovacao)
         {

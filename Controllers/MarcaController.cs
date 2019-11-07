@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_TechCycle.Models;
 using API_TechCycle.Repositorio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,7 @@ namespace API_TechCycle.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de marca.</returns>
         /// 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Marca>>> Get(){
 
@@ -39,6 +41,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">passa um id de uma marca.</param>
         /// <returns>Retorna uma marca.</returns>
         
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Marca>> Get(int id){
 
@@ -62,7 +65,7 @@ namespace API_TechCycle.Controllers
         /// </summary>
         /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna uma marca.</returns>
-        
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public async Task<ActionResult<Marca>> Post(Marca marca){
 
@@ -84,6 +87,7 @@ namespace API_TechCycle.Controllers
         /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna a marca atualizada.</returns>
         
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public async Task<ActionResult<Marca>> Put(int id, Marca marca){
 
@@ -115,6 +119,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">Passa um id de uma marca.</param>
         /// <returns>Retorna a marca excluída.</returns>
         
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Marca>> Delete(int id){
 
