@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_TechCycle.Models;
 using API_TechCycle.Repositorio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,7 @@ namespace API_TechCycle.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de categoria.</returns>
         
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Categoria>>> Get()
         {
@@ -39,6 +41,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">passa um id de uma categoria.</param>
         /// <returns>Retorna uma categoria.</returns>
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Categoria>> Get(int id)
         {
@@ -62,6 +65,7 @@ namespace API_TechCycle.Controllers
         /// <param name="categoria">Passa uma categoria.</param>
         /// <returns>Retorna uma categoria.</returns>
         
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public async Task<ActionResult<Categoria>> Post(Categoria categoria)
         {
@@ -84,6 +88,7 @@ namespace API_TechCycle.Controllers
         /// <param name="categoria">Passa uma categoria.</param>
         /// <returns>Retorna a categoria atualizada.</returns>
     
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public async Task<ActionResult<Categoria>> Put(int id, Categoria categoria)
         {
@@ -112,6 +117,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">Passa um id de uma categoria.</param>
         /// <returns>Retorna a categoria excluída.</returns>
     
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Categoria>> Delete(int id)
         {

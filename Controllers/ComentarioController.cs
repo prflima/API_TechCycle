@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_TechCycle.Models;
 using API_TechCycle.Repositorio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,7 @@ namespace API_TechCycle.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de comentário.</returns>
     
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Comentario>>> Get(){
 
@@ -38,6 +40,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">Passa um id de um Comentário</param>
         /// <returns>Retorna um Comentário</returns>
     
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Comentario>> Get(int id){
 
@@ -61,6 +64,7 @@ namespace API_TechCycle.Controllers
         /// <param name="comentario">Passa um comentário.</param>
         /// <returns>Retorna um comentário.</returns>
         
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Comentario>> Post(Comentario comentario){
 
@@ -81,6 +85,7 @@ namespace API_TechCycle.Controllers
         /// <param name="comentario">Passa um comentário para identificação.</param>
         /// <returns>Retorna um comentário.</returns>
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<Comentario>> Put(int id, Comentario comentario){
 
@@ -109,6 +114,7 @@ namespace API_TechCycle.Controllers
         /// <param name="id">Passa um id de um comentário.</param>
         /// <returns>Retorna um comentário.</returns>
         
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Comentario>> Delete(int id){
 
