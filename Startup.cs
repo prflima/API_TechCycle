@@ -50,6 +50,8 @@ namespace API_TechCycle
                 };
             });
 
+            services.AddCors();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +61,8 @@ namespace API_TechCycle
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(option => option.AllowAnyOrigin());
 
             app.UseAuthentication();
 

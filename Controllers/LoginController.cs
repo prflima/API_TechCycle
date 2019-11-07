@@ -3,8 +3,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using API_TechCycle.Models;
+using API_TechCycle.Repositorio;
+using API_TechCycle.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -18,6 +22,7 @@ namespace API_TechCycle.Controllers
     {
         // Chamamos nosso contexto do banco
         TECHCYCLEContext context = new TECHCYCLEContext();
+        UsuarioRepositorio repositorio = new UsuarioRepositorio();
 
         // Definimos uma variável para percorrer nossos métodos com as configurações obtidas no appsettings.json
         private IConfiguration _config;
@@ -27,13 +32,15 @@ namespace API_TechCycle.Controllers
             _config = config;
         }
 
+        [EnableCors]
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Login(Usuario login)
+        public  IActionResult Login(UsuarioViewModel login)
         {
+                        
             IActionResult response = Unauthorized();
             
-            var usuario = autenticarUsuario(login);
+            var usuario =  autenticarUsuario(login);
 
             if(usuario != null)
             {
@@ -44,12 +51,10 @@ namespace API_TechCycle.Controllers
             return response;
         }
 
-        private Usuario autenticarUsuario(Usuario login)
+        private Usuario autenticarUsuario(UsuarioViewModel login)
         {
-            var usuario = context.Usuario.FirstOrDefault(us => us.Email == login.Email && us.Senha == login.Senha);
+            var usuario = context.Usuario.FirstOrDefault(us => us.LoginUsuario == login.LoginUsuario && us.Senha == login.Senha);
 
-            if(usuario != null)
-                return login;
 
             return usuario;
         }
