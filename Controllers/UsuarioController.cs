@@ -104,7 +104,6 @@ namespace API_TechCycle.Controllers
         /// <summary>
         /// Tem a função de buscar na lista um usuário.
         /// </summary>
-        /// <param name="id">Passa um id de um usuário.</param>
         /// <param name="usuario">Passa um usuário para identificação.</param>
         /// <returns>Retorna um usuário.</returns>
 

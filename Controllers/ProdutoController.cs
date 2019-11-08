@@ -196,7 +196,7 @@ namespace API_TechCycle.Controllers
         /// <summary>
         /// Tem a função de filtrar por marca.
         /// </summary>
-        /// <param name="marca">Passa um marca.</param>
+        /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna todos os produtos que contenham a marca desejada.</returns>
 
         [Authorize]

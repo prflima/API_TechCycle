@@ -55,7 +55,7 @@ namespace API_TechCycle.Controllers {
         /// <summary>
         /// Tem a função de cadastrar um novo anúncio na lista.
         /// </summary>
-        /// <param name="anúncio">Passa um anúncio.</param>
+        /// <param name="anuncio">Passa um anúncio.</param>
         /// <returns>Retorna um anúncio.</returns>
 
         [Authorize(Roles = "Administrador")]
@@ -207,7 +207,7 @@ namespace API_TechCycle.Controllers {
         /// Tem a função de filtrar os anúncios por memória e marca.
         /// </summary>
         /// <param name="memoria">Passa a memória</param>
-        /// <param name="marca">Passa a marca.</param>
+        /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna todos os anúncios que contenham a memória e marca desejada.</returns>
 
         [Authorize]
@@ -225,7 +225,7 @@ namespace API_TechCycle.Controllers {
         /// </summary>
         /// <param name="memoria">Passa a memória.</param>
         /// <param name="categoria">Passa a categoria.</param>
-        /// <param name="marca">Passa a marca.</param>
+        /// <param name="marca">Passa uma marca.</param>
         /// <returns>Retorna todos os anúncios que contenham a memória,categoria e marca desejada.</returns>
 
         [Authorize]
