@@ -20,7 +20,7 @@ namespace API_TechCycle.Controllers
         /// Tem a função de trazer uma lista de produto.
         /// </summary>
         /// <returns>Retorna uma lista de produto</returns>
-        [Authorize(Roles="Administrador")]
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> get()
         {
@@ -139,7 +139,7 @@ namespace API_TechCycle.Controllers
         /// <param name="memoria">Passa uma quantidade de memória.</param>
         /// <returns>Retorna todos os produtos que contenham a memória desejada.</returns>
         
-        [Authorize(Roles = "Administrador")]
+        [Authorize]
         [HttpGet("buscarmemoria/{memoria}")]
         public async Task<ActionResult<List<Produto>>> BuscaPorMemoria(int memoria)
         {

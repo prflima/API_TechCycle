@@ -18,7 +18,7 @@ namespace API_TechCycle.Controllers {
         /// Tem a função de listar um anúncio.
         /// </summary>
         /// <returns>Retorna uma lista de anúncio.</returns>
-        
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Anuncio>>> Get () {
 

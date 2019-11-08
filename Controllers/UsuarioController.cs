@@ -149,6 +149,12 @@ namespace API_TechCycle.Controllers
 
         }
 
+        /// <summary>
+        /// Tem a função mandar uma senha redefinida para o email do usúario caso ele esqueça.
+        /// </summary>
+        /// <param name="usuario">Passa o usúario que esqueceu a senha.</param>
+        /// <returns>Retorna a senha redefinida do usúario.</returns>
+
         [AllowAnonymous]
         [HttpPut("recuperarsenha")]
         public async Task<ActionResult<Usuario>> RecuperarSenha(UsuarioViewModel usuario)
