@@ -32,6 +32,12 @@ namespace API_TechCycle.Controllers
             _config = config;
         }
 
+        /// <summary>
+        /// Tem a função de fazer um login de um usúario no sistema pela a autentição JWT definindo o nível do acessob.
+        /// </summary>
+        /// <param name="login">Passa o nome do usúario é a senha.</param>
+        /// <returns>Retorna o usúario logado no sistema.</returns>
+
         [EnableCors]
         [AllowAnonymous]
         [HttpPost]
