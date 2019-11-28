@@ -166,7 +166,7 @@ namespace API_TechCycle.Controllers
                await repositorio.Put(userRecuperado);
 
                string tituloEmail = "Recuperação de senha";
-               string corpoEmail = $"Sua nova senha é: {userRecuperado.Senha}, altere urgente";
+               string corpoEmail = System.IO.File.ReadAllText(path: @"parabens.html"); 
                _email.Email(user.Email, corpoEmail, tituloEmail);
             }
             catch(Exception ex)

@@ -80,13 +80,6 @@ namespace API_TechCycle.Controllers
 
             return categoria;
         }
-
-        /// <summary>
-        /// Tem a função de atualizar uma categoria.
-        /// </summary>
-        /// <param name="id">Passa um id de uma categoria.</param>
-        /// <param name="categoria">Passa uma categoria.</param>
-        /// <returns>Retorna a categoria atualizada.</returns>
     
         [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
