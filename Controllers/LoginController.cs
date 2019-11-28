@@ -75,6 +75,7 @@ namespace API_TechCycle.Controllers
                 new Claim(JwtRegisteredClaimNames.Email, infoUsuario.Email),
                 new Claim(ClaimTypes.Role, infoUsuario.TipoUsuario),
                 new Claim("Roles", infoUsuario.TipoUsuario),
+                new Claim("IdUsuario", infoUsuario.IdUsuario.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
