@@ -26,7 +26,7 @@ namespace API_TechCycle.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de usuário</returns>
 
-        [Authorize]
+        // [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> Get()
         {
@@ -135,7 +135,8 @@ namespace API_TechCycle.Controllers
         /// <param name="id">Passa um id do usuário.</param>
         /// <returns>Retorna um usuário</returns>
 
-        [Authorize] /*O proprio usuario poderia excluir sua conta */
+        /*O proprio usuario poderia excluir sua conta */
+        // [Authorize] 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Usuario>> Delete(int id)
         {
