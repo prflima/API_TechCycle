@@ -20,7 +20,7 @@ namespace API_TechCycle.Controllers
         /// Tem a função de trazer uma lista de produto.
         /// </summary>
         /// <returns>Retorna uma lista de produto</returns>
-        [Authorize]
+        // [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> get()
         {

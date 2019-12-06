@@ -29,7 +29,7 @@ namespace API_TechCycle.Controllers
                     file.CopyTo(stream);
                 }
 
-                return fullPath;
+                return fileName;
             }
             else
             {

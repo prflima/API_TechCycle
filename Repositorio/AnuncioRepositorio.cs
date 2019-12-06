@@ -15,11 +15,15 @@ namespace API_TechCycle.Repositorio
         public async Task<List<Anuncio>> Get()
         {
             List<Anuncio> listaAnuncios = await context.Anuncio.Include(pdt => pdt.IdProdutoNavigation)
+                                                                .Include(mac => mac.IdProdutoNavigation.IdMarcaNavigation)
+                                                                .Include(cat => cat.IdProdutoNavigation.IdCategoriaNavigation)
                                                                 .Include(avl => avl.IdAvaliacaoNavigation)
                                                                 .ToListAsync();
         
             foreach(var anuncio in listaAnuncios){
                 anuncio.IdProdutoNavigation.Anuncio = null;
+                anuncio.IdProdutoNavigation.IdMarcaNavigation.Produto = null;
+                anuncio.IdProdutoNavigation.IdCategoriaNavigation.Produto = null;
                 anuncio.IdAvaliacaoNavigation.Anuncio = null;
             }
 

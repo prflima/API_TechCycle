@@ -14,11 +14,13 @@ namespace API_TechCycle.Controllers {
     public class AnuncioController : ControllerBase {
         AnuncioRepositorio repositorio = new AnuncioRepositorio ();
 
+        UploadController _upload = new UploadController();
+
         /// <summary>
         /// Tem a função de listar um anúncio.
         /// </summary>
         /// <returns>Retorna uma lista de anúncio.</returns>
-        [Authorize]
+        // [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Anuncio>>> Get () {
 
@@ -35,7 +37,7 @@ namespace API_TechCycle.Controllers {
         /// <param name="id">Passa um id de um anúncio</param>
         /// <returns>Retorna um anúncio</returns>
 
-        [Authorize]
+        // [Authorize]
         [HttpGet ("{id}")]
         public async Task<ActionResult<Anuncio>> Get (int id) {
 
@@ -58,15 +60,19 @@ namespace API_TechCycle.Controllers {
         /// <param name="anuncio">Passa um anúncio.</param>
         /// <returns>Retorna um anúncio.</returns>
 
-        [Authorize(Roles = "Administrador")]
+        // [Authorize(Roles = "Administrador")]
         [HttpPost]
-        public async Task<ActionResult<Anuncio>> Post (Anuncio anuncio) {
+        [DisableRequestSizeLimit]
+        public async Task<ActionResult<Anuncio>> Post([FromForm]Anuncio anuncio) {
 
             if (anuncio == null) {
                 return NotFound ();
             }
 
             try {
+                var file = Request.Form.Files[0];
+
+                anuncio.Foto = _upload.Upload(file, "Resources/Anuncio");
 
                 await repositorio.Post (anuncio);
             } catch (Exception) {
@@ -115,7 +121,7 @@ namespace API_TechCycle.Controllers {
         /// <param name="id">Passa um id de um anúncio.</param>
         /// <returns>Retorna um anúncio.</returns>
 
-        [Authorize (Roles = "Administrador")]
+        // [Authorize (Roles = "Administrador")]
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Anuncio>> Delete (int id) {
 
